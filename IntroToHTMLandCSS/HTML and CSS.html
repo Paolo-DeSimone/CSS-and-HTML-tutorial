@@ -1,0 +1,844 @@
+<!-- This is the HTML structure:
+
+<!DOCTYPE html>
+<html>
+  <head>
+      MY CODE
+ </head>
+  <body>
+      MY CODE
+  </body>
+</html>
+
+EXPLENATION: 
+
+The HTML structure must always be followed and cannot be written more than 1 time in the same file.
+This first line's only purpose is telling to the broswer to use a more recent version of HTML in order to have more features we can use. If omitted, we will use an older HTML version.
+
+Then we have html tag (<html></html>), which represents the entiere web page and contains head and body tags. Containing others tags is a feature called nesting.
+
+Both tags can contain the code we write but head contains only the things which WILL NOT be visible on the page, body can contaion only the things that will be visible on the page.
+So CSS will be placed in head tag, while HTML in the body.
+
+NOTE: 
+
+The best thing to do is putting CSS code in a separated file with css extension (ex: fileName.css). So we will have 2 files: one for HTML, one for CSS.
+To link the two files, in head section of HTML file we need to write:
+<link rel="stylesheet" href="">
+
+This means that we are linking a stylesheet whose name is written inside href attibute. So we will have something like:
+<link rel="stylesheet" href="CSS code.css">
+
+Please note that href attribute will be able to find the CSS file only if it in the same folder of the HTML file we are working on.
+If it is in a different folder, we will need to write the full filepath. So it will be something like: 
+<link rel="stylesheet" href="nameOfTheFolder/CSS code.css">
+
+In this way, the code will be "cleaner". 
+For this time, I will put HTML and CSS togheter for this time because I have technical problems in uniting them.
+I created a file called: "mini-project" just to show how to work with HTML and CSS in two different files.
+
+Note that exist some kind of tag called void tags which have the feature of not having a closing tag. link and img tags are 2 examples.
+
+-->
+
+
+
+<!-- To check what the following HTML and CSS instructions will do, open this file on Chrome. If you want to modify something to see the result and learning, do it and then refresh Chrome.
+
+  If you want avoid refreshing to see each modify, make sure to have installed "live server" plug-in and then right-click on an empty file's area and select "open with live server" 
+  NOTE: live server will not work if you do not delite all the commented section about HTML structure. So from line 1 to 35-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+  <title>HTML and CSS' summary</title> <!-- This modifies the name on the browser tab -->
+
+
+  <div><!-- CSS theory -->
+    <style> 
+    /* 
+      CSS is used to modify the style of our web pages. 
+      NOTE: HTML tags can modify the style of the web page BUT it is not its purpose since it only define the structure of the page. Everything about the style of the page is CSS' concern. 
+
+      Example: if we want a word to be written in bold we can use the tag "strong" to have this style effect and this is ok because the result is archieved but a developer must not rely on this mindset.
+      To get a style modify CSS is the first thing to think about.
+      Another important thing, also in general, is to be coherent. For example: if I decide to archieve bold writing using strong tag once, I must keep using that strategy throughout all the project.
+
+      "style" is the basic tag in CSS: it tells the compiler that we are going to write CSS untill its closing tab:
+      
+      CSS is like HTML: compiler reads the instructions one by one in the order we write them.
+
+        CSS works with selectors and properties and, as for the tags and attributes in HTML, each one does a specific action. Example:
+
+        button { 
+        background-color: red;
+      }
+
+      button is the CSS selector
+      background-color is a CSS property which modifies the background color of the selector with its value which, in this case, is "red"
+      Note that if we write like that, the modifies inside the curly brackets are going to affect ALL the tags called "button" in our HTML code.
+
+      If we want to target/modify a specific tag of our code, we need to give him a "specific name". 
+      This is done like adding to the HTML tag an HTML attribute called class. Here is how we do:
+
+      First we have our HTML tag inside our HTML script:
+
+        <button>SUBSCRIBE</button>
+
+      Second we modify the tag with class attribute like this:
+
+        <button class = thisIsTheSpecificNameOfThisTag >SUBSCRIBE</button>
+
+      Third we need write inside our CSS script now, contained in "style" tag, and write like this:
+
+        .thisIsTheSpecificNameOfThisTag{
+          background-color: red;
+        }
+
+      As we can see, now the selector is no long a generic HTML tag name but it has a dot followed by the value of the "class" attribute which is inside the HTML opening tag.
+      Note that the same attribute's value can be used in more tags. As a matter of fact, this is perfectly fine:
+
+        <button class = JOINbutton> JOIN </button>
+        <button class = JOINbutton> DO NOT JOIN </button>
+
+        "style" opening tag (I will not write the acutal tag because it creates problems, even if I am writing inside a comment)
+
+        .JOINbutton{
+          ...
+        }
+
+        "style" closing tag
+
+      */
+    </style>
+  </div>
+
+
+  <div><!-- CSS properties -->
+    <style>
+
+      /*this is a comment line in CSS*/
+
+      /*
+      this is a 
+      multi-line comment 
+      in CSS
+      */
+
+      .BottonsAndYTlink{
+        text-align: center;
+      }
+      .YTbutton{
+        background-color: rgb(205, 0, 0);
+        /*changes the background color.
+        Note that if you hover on the red square, it will appear the color picker. rbg stands for Red, Green an Blue which are the colors which can return any color if mixed together. 
+        The color returned depends on the amount of each color and the 3 figures represents the 3 color in this order: Red, Green an Blue.
+        The maximum value for each figure is 255. rgb(0,0,0) equals to black, rgb(255,255,255) equals to white and, as an example, rgb(0,0,255) equals to blue.
+        */
+        color: white; /*changes the TEXT color*/
+        border: none; /*Non ho capito*/
+        height: 36px; /*px stands for Pixels. NOTE: like this you put a fixed lenght. So if you modify the text, it may overflow. To avoid this, delete this line or use padding properties described in JOIN button.*/
+        width: 105px; /*NOTE: like this you put a fixed lenght. So if you modify the text, it may overflow. To avoid this, delete this line or use padding properties described in JOIN button.*/
+        border-radius: 2px; /*changes the angles from square to rounded. The higher the px value is, the higher is the rounded effect.*/
+        cursor: pointer; /*changes the pointer which is the arrow that we move moving our mouse. the pointer turns the arrow into an hand with its index lifted up*/
+        transition: opacity 0.15s;/*changes the time necessary to a property to be implemented. So it accepts 2 values: the first is the property we want to affect, the second is the duration of the transition in seconds*/
+
+      }
+
+      .YTbutton:hover{ /*":hover" is a pseudo-class that adds extra styles ONLY when the user hovers, IN ADDICTION to what is written in the main selector: ".YTbutton{}"*/
+        opacity: 0.8; /*changes the opacity meaning how much see-through (trasparente) an element HTML is. Accepts values among 0.0 and 1 where 0 means that the element is completely faded out while 1 is normal*/
+      }
+
+      .YTbutton:active{ /*":active" is a pseudo-class that adds extra styles ONLY when the user active the selector. In this case, clicks the button. */
+      opacity: 0.5;}
+
+      .JOINbutton{
+        color: rgb(7, 69, 185);
+        background-color: white;
+        /*
+        PADDING PROPERTIES: modify the space inside the tag in a way that does not matter how long the text will be or the operations we do: there will always be the padding we are going to set.
+        */
+        margin-right: 8px;
+        margin-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 16px;
+        padding-right: 16px;      
+        border-radius: 2px;
+        cursor: pointer;
+        border-color: rgb(7, 69, 185); /*da capire la differenza con "border"*/
+        border-style: solid; 
+        /*changes the style of the border. 
+        The solid value makes sure that the color of all the border is the same. 
+        If i delite this line, i will have a border with 2 tonalities of blue, in this case, and this is the default style
+        */
+        border-width: 1px; /* changes the width of the border only */
+        margin-left: 8px; /*the margin is an area around an element. Changing the margin will affect the position of the element inside our web page.*/
+        transition: background-color 1s, color 1s;
+        /*
+        as we can see, it is needed just a comma to add multile properties that we want the transition to affect
+        NOTE: if you put the transition property inside a selector with the :hover pseudo-class, the transition will not be working when the user stops to hover.
+        This means that the HTML tag affected will turn back to the original not-hovering state immediately, without any transition, which is usually not a pleasant visual effect.
+        */
+
+      }
+
+      .JOINbutton:hover{
+        background-color: rgb(7, 69, 185);
+        color: white;
+      }
+
+      .JOINbutton:active{
+      opacity: 0.7;
+      }
+
+      .Tweetbutton{
+      background-color: rgb(0, 128, 255);
+      color: white;
+      border: none;
+      vertical-align: bottom; /*NON CAPITO BENE: se ci sono più elementi, a quale di questi si allinea?? Browswers usually align things based on the text each element has. If we want an element to align differently we can use this property. */
+      margin-right: 8px;
+      margin-left: 20px;
+      padding-top: 11px;
+      padding-bottom: 20px;
+      padding-left: 16px;
+      padding-right: 16px;  
+      margin-left: 8px;
+      border-radius: 18px; /*the trick to have perfect rounded corners is to set as border radius the half of the height of the button*/ 
+      font-weight: bold; /*da capire bene*/
+      font-size: 15px; /*changes the size of the text*/
+      cursor: pointer;
+      transition: box-shadow 0.5s;
+
+      }
+
+      .Tweetbutton:hover{
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+      /*
+      creates a shadow under the HTML tag. It accetps 4 values: 
+      the first is the orizontal position of the shadow in px
+      the second is the vertical position of the shadow in px
+      the third is the blur (sfocatura) expressed in px
+      the fourth is the color of the shadow. 
+      NOTE: the fourth value can be writtin using "rgba" which is the same thing of rgb, just with the possibility to add opacity with values ranging from 0 to 1
+      */
+      }
+
+
+
+      .MainTitle{       /*  HERE WE START WITH TEXT EDITING  */
+        text-align: center;
+        font-family: Arial;
+        /*
+        We already have a lot of default fonts we can use.
+
+        If we want find/discover others fonts, we can google: https://fonts.google.com/ which will provide us with the font source code that will allow us to use the new font in out file.
+        To find the font source code of a certain font, open the site, find/write the font you want, click on it, ctrl+F "View all styles", click on "select ..." on the right of the page. 
+        Now copy the code you'll see, which is the font source code, and paste that in head section. Now you will be able to write the font-family property with the name of the new font.
+
+        Note that not all the fonts have the "View all styles" sentence so I don't know if it possibile to use that style. Free to figure this out, if you want.
+        */
+        font-style: oblique;
+        color: rgba(25, 115, 219, 0.935);
+      }
+
+      h2{
+        text-align: center;
+        font-family: Arial;
+        font-size: 30px;
+        font-weight: bold;
+        font-style: italic;
+        text-align: center;
+        color: rgba(25, 115, 219, 0.935);
+      }
+
+      p{ /*To avoid duplication, I can use this strategy: putting as CSS selector a general HTML tag. Of course this could be used with others properties: font-size, font-family...wherever*/
+          color: rgb(13, 122, 158);
+          text-align: center;
+          font-size: 20px;
+          width: 500px; 
+          margin-left: 700px;
+          text-align: center;
+          line-height: 40px;
+          font-family: calibri;
+          /*
+          NOTE: We have two different font-family properties in this file: in this selector we have "calibri", in the others we have "arial".
+          Which command will the broswer execute? The answer is: the one which is more specific. So Arial will be the preferred one since it is inside a more specific selector.
+          The reasoning "last command written will be executed" is not valid in this case because now what is actually acting is a principle known as "CSS specificity".
+          */
+      }
+
+
+      li{
+        color: rgb(13, 122, 158);
+          text-align: center;
+          font-size: 20px;
+          margin-left: 700px;
+          width: 300px;
+          line-height: 40px;
+          font-family: calibri;
+      }
+
+      .DevtoolsTitle{
+          font-family: Arial;
+          font-size: 30px;
+          font-weight: bold;
+          font-style: italic;
+          text-align: center;
+          color: rgba(25, 115, 219, 0.935);
+      }
+
+      .Devtools1stParagraph{
+          font-family: Arial;
+          font-size: 20px;
+          line-height: 1cm; /*modifies the distance between a line and another. It can also be in pixels.*/
+          width: 500px; /*changes the space allowed to the text in width so modifes the maximum length of each line*/
+          margin-left: 700px;
+          text-align: center; /* NOTE: does not put the text in the center of the page! I use margin-left for this. Delite this line to see what does*/
+      }
+
+      .Devtools2ndParagraph{
+          font-family: Arial;
+          font-size: 20px;
+          width: 500px; 
+          margin-left: 700px;
+          text-align: center;
+          line-height: 40px;
+      }
+
+        .MiddleDotEntity{
+            font-size: 30;
+            font-weight: bold; 
+        }
+
+      .Devtools3rdParagraph{
+          font-family: Arial;
+          font-size: 20px;
+          width: 700px; 
+          margin-left: 600px;
+          text-align: center;
+          line-height: 40px;
+      }
+
+        .RandomText{
+          color: red;
+          font-weight: bold;
+          background-color: yellow;
+        }
+
+        .RandomText:hover{
+          text-decoration: underline;
+          cursor: pointer;
+        }
+    
+
+      .BMTHImage{           /*HERE WE START WITH IMAGES AND TEXT BOXES*/
+        width: 600px; /*Note how the image has changed width but ALSO the high to keep the same resolution. If i set also the heigh the image will have a fucked-up dimension/shape.*/
+        height: 600px; /*To avoid what we learnt before, we use object-fit property which is a property just for images, as font-size is just for texts*/
+        object-fit: cover; /*It is used to decide what happens if the image does not fit with the width and heigh we set. "Cover" tells the image to cover all the area (widht * heigh ) with the image */
+        object-position: left; /*tells which part of the image we want to see in respect of the object (image) fit we have*/
+        }
+
+      .BMTHImage2{
+        width: 600px; 
+        height: 600px;
+        object-fit: contain; /*Contain is used to contain ALL the image in the area we set. Now there is any image's cut like happened before but, if the image does not have the same area there will be empty spaces, as we can see*/
+        object-position: top;
+        border-width: 2px; /*Now we will see the 600x600 px area and the empty spaces left by the "object-fit: contain; property*/
+        border-style: solid;
+        border.color: red;
+      }
+
+
+      .TextBox{
+        font-size: 20px;
+      }
+
+      .BMTHImage3{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+      }
+
+      .FirstListItem{
+        width: 800px;
+        text-align: left;
+      }
+
+      .FromBlockToInlineBlockOne,     /*CSS SYNTAX TIP: to apply the same properties to more selectors, use a simple comma to separate them*/
+      .FromBlockToInlineBlockTwo{
+        display: inline-block;
+        width: 300px;
+        margin-left: 0px;
+        padding-left: 640px;
+      
+      }
+
+      .FromBlockToInlineBlockTwo{
+        padding-left: 50px;
+      }
+
+      .BMTHImage4FromInlineBlockToBlock,
+      .TEXTFromInlineBlockToBlock{
+        display: block;
+        margin-left: 700px;
+      }
+
+      .DivDeepeningTitle{
+        margin-left: 500px;
+      }
+
+      .DivDeepening{
+        width: 1400px;
+        display: inline-block;
+      }
+
+
+      .ElementsInOrizontalLineOne,
+      .ElementsInOrizontalLineTwo,
+      .ElementsInOrizontalLineThree{
+        width: 600px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 25px;
+      }
+
+      .BoxOfElementsInOrizontalLineTwo{
+        display: block;
+      }
+
+      .TextElementsInOrizontalLineThree{
+        margin-left: 0px;
+      }
+
+      .NestedlayoutstechniqueImageOne{
+        margin-left: 350px;
+
+      }
+
+      .NestedlayoutstechniqueImageTwo{
+        margin-left: 580px;
+      }
+
+      .NestedlayoutstechniqueImageThree{
+        margin-left: 550px;
+      }
+
+      .NestedlayoutstechniqueImageFour{
+        margin-left: 500px;
+      }
+
+      .FinalResult1stDiv{
+        width: 400px;
+        height: 400px;
+      }
+
+
+
+    </style>
+  </div>
+
+
+</head>
+
+<body>
+
+
+  <div><!--HTML theory
+      HTML stands for Hyper Text Mark-up Language and uses tags to create web pages.
+      Each thing put into <> and </> is called opening or closing tag.
+      Tags can have attributes which modify the way an element behaves.
+      Attributes have got a value which determinates exactly how the attribue is going to modify the behaveour of a tag.
+      Compiler reads the instructions/tags we write line by line so this is also the order of execution and the order with which things are displayed on browsers, like Google Chrome.
+
+
+      Here is an example: 
+
+      <a href="https://www.youtube.com/watch?v=G3e-cpL7ofc&t=3703s" target="_blank">Link to Youtube</a>
+
+      <a> is the tag which is called "ancor tag"
+      href is the attribute and "https://www.youtube.com/watch?v=G3e-cpL7ofc&t=3703s" is the value.
+      target is another attribute which determinates how the link is going to open. With _blank as value it will open in a new tab. If omitted, the link will open in the current page.
+
+      Please note that HTML defines only the structure of a web page. The style/appearance is handled by CSS (Cascading Style Sheets).
+      So, as an example, if we want some space between a bottom and another one we do not simply put spaces between the 2 HTML botton tags: there is a proper way to do it with CSS.
+      If we try to put spaces in HTML scripts, the compiler will ignore them and no modifies will appear on our web page.
+
+      Anyway, adding spaces and lines in HTML scripts, is usefull to enhance readbility or, as it is called in coding, indentation. 
+      Indentation is not only about the readability: putting something "under" something else helps to explain the logic of your code too. Example:
+
+      code line one
+        code line two
+          code line three
+      
+      If something is indented in this way, we can understand that line three is part of two which is part of one. 
+      Writing in this way, would have been different:
+
+      code line one
+      code line two
+        code line three
+
+      This would have meant that line three is still part of two, but lines two and one are not bounded in any way and they have got the same "importance"
+      Note that is HTML convention says that there must be 2 spaces at each tab.
+      In VS Code we can see how many spaces we are using on the left bottom corner under the voice "Spaces:"
+    -->
+  </div>
+
+
+  <div><!-- HTML tags --> 
+
+
+
+    <!-- This is a comment line-->
+
+    <!-- 
+        This is a 
+        multi-line 
+        comment
+      -->
+
+    <div></div> <!-- This is used to group tags which refer to a specific subject, creating various sections of the page, each one with one single topic. -->
+
+
+
+    <h1 class="MainTitle">This is an HTML and CSS YT tutorial's summary</h1> <!-- this is an heading tag which is used to write titles or subtitles. The max number is h6. The lower the number, the lesser the importance that subtitle has. -->
+
+    <div class="BottonsAndYTlink">
+
+        <a href="https://www.youtube.com/watch?v=G3e-cpL7ofc&t=3703s" target="_blank">Link to Youtube tutorial</a> 
+
+        <button class="YTbutton">SUBSCRIBE</button>
+        
+        <button class="JOINbutton">JOIN MY CHANNEL</button>
+        
+        <button class="Tweetbutton">Tweet</button>
+
+    </div>
+
+
+
+    <div><h2 class="DevtoolsTitle">Chrome DevTools</h2> 
+
+      <p class="Devtools1stParagraph"> <!-- this is the paragraph tag. Here you put regular text-->
+          
+            <strong>Devtools1stParagraph:</strong> To explain what Chrome DevTools is is much better just to open it right clicking on an empty area of the page and click "inspect" and just exploring this tool by yourself or you can watch the YT tutorial.
+          
+            <br> <!-- break tag is used put a line break, separating two text sections.-->
+          
+            Just know that is usefull to check the HTML and the CSS of ANY web page. So, if you want to copy or check something, with this tool is really easy.
+          
+      </p>
+
+      <br>
+
+      <p class="Devtools2ndParagraph">
+
+      <strong>Devtools2ndParagraph:</strong> This paragraph will have some special caracthers called entity in HTML. 
+
+      <br>
+
+      To find them, just google the name of the thing that you want + HTML entity. Example: middle dot HTML entity.
+
+      <br>
+            
+      This is a middle dot: <strong class="MiddleDotEntity">&#183;</strong> and this is a checkmark: &#10004;	
+            
+      </p>
+
+      <br>
+
+      <p class="Devtools3rdParagraph">
+      <strong>Devtools3rdParagraph:</strong> This paragraph will have some
+            
+      <br>
+            
+      &#8211; &#62; <span class="RandomText" > RANDOM TEXT </span> &#60; &#8211; 
+      <!--"span" is a tag which does nothing. For this reason it is usefull if we need to use some attributes like class-->
+            
+      <br>
+
+      which <u> makes the pointer change its stile and gets itself undelined just when hovering </u> 
+
+      </p>
+
+    </div>
+
+
+
+    <div><h2>CSS Box Model</h2> 
+
+      <p>
+          
+        Again: check the tutorial out or just explore.
+            
+        <br>
+            
+        CSS Box Model is used to determinate how much space an element takes up and how far it is away from other elements.
+
+        <br>
+            
+        This box is composed of 4 elements: a content area, a padding, a border and a margin. Studying the properties of this file, it will be clear what exactly they are. 
+        Just a note: content area is the actual space taken by an element. So, to modify that, you need to use heigh and widht properties. Whenever you are modifing a text, an image or whatever.
+
+      </p>
+
+    </div>
+
+
+
+    <div><h2>Learning about images</h2> 
+
+      <p>
+          
+        The first thing to use an image is to find an image: a way to do that could be using the Chrome DevTools, selecting the image, hovering on its link contained in attribue "src",
+        clicking the link inside "current source" voice that will appear. Now a new tab will be opened.
+
+            
+        <br>
+
+        Second thing is saving that image inside <u>the same folder</u> that contains our web page's code.
+        Of course we can also save the image in a sub-folder of the main folder, like i did for this page. That sub-folder may be title "images".
+      
+        <br>
+
+        Third is using the img tag with src attribute that tells to computer which image to display.
+        if you want, you can add the alt attribute which will contain some text that will replace the image in case the pc in not able to find or display the image for any reason.
+        The risult is what you can see below:
+
+        <br>
+
+        <img src="BrngMeToTheHorizon.jpg" alt="Image not available">
+
+        <img src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+
+        <img class="BMTHImage" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+
+        <img class="BMTHImage2" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+
+        Note how you need to copy the hole image path. To do that, right-click on the image or its name and select something like "copy path"
+
+        <br>
+
+        Of course you can modify with CSS the image using class attribute, as for any HTML tag.
+
+        <br>
+
+      </p>
+
+
+    
+  </div>
+  
+
+
+  <div><h2>Learning about boxes</h2> 
+
+    <p>
+        
+      There are more kind of boxes: text, email, checkbox...with varois kind of attributes. 
+      Jere is an example:
+          
+      <br>
+      
+      <img class="BMTHImage3" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+
+      <input class = "TextBox "type="text" placeholder="Search" name="" id="">
+
+      <p>this line is a paragraph</p>
+
+      <p>this line is another paragraph</p>
+
+      <p>As you can see, the text box is beside the image while these paragraphs are under the image. Why is that? This is due to display property in CSS</p>
+
+    </p>
+
+  </div>
+
+
+
+  <div><h2>Display property in CSS</h2> 
+
+    <p>We have got 3 types of elements in CSS:
+
+
+
+        <ol>
+
+
+
+          <li><strong>block element:</strong></li>
+              <p class="FirstListItem" >
+                Does not matter the actual content area of an element, it always will take up the entiere line, 
+                meaning that even if there is "-" as margin value in the CSS box model (so in there is no margin value) the margin area will actually occupy the entiere line.
+                
+                <br>
+
+                EX: a paragraph by default is block element
+
+              </p>
+
+
+
+          <li><strong>inline-block element:</strong></li>
+              <p>
+                it takes up only the needed space, without occupying all the line. So another element could appear beside it.
+
+                <br>
+
+                EX: image and input tags.
+
+              </p>
+              
+
+
+
+          <li><strong>inline element:</strong></li>
+              <p>
+                It always appears within a line of text.
+
+                <br>
+
+                EX: strong or u tags.
+
+              </p>
+
+        </ol>
+
+
+
+        <p>        
+          I still reccomand to check out the tutorial for this because in the video you see these things using the Chrome Devtools
+        </p>
+        
+        <br>
+
+        <p>Another interesting thing is the that a block element can be turned into a inline block element and viceversa using the "display" CSS property. Here two examples:</p>
+
+
+
+        <ul>
+
+            <li><strong>From block to inline block:</strong></li>
+
+            <p class="FromBlockToInlineBlockOne">paragraph 1 </p>
+            <p class="FromBlockToInlineBlockTwo">paragraph 2 </p>
+
+            <p>As you can see now the two paragraphs are on the same line, despite being block elements by default</p>
+
+            <br>
+
+            <li><strong>from inline block to block:</strong></li>
+
+            <img class="BMTHImage4FromInlineBlockToBlock" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+            <input class="TEXTFromInlineBlockToBlock"type="text">
+
+            <p>As you can see now the two tags are on different lines, despite being inline block elements by default</p>
+
+
+        </ul>
+      
+
+    </p>
+
+  </div>
+
+
+
+<div class="DivDeepening"><h2 class="DivDeepeningTitle">A little deepening about &lt;div&gt;	tag </h2>
+
+    <p>
+
+      I have been using div throughout the code but never explaned what really is: div tag can contain any tag, inclueded others div tags, and for this reason is usefull to:
+
+      <br>
+
+      make understand to other developers the logic we used to build a page when they look at our code and to
+      regroup some elements in a single section in order to easly move or modify that group of elements creating the page layout we want.
+
+      <br>
+
+      Note that if we assign a width value, like i did for this section, to a div element, all the block elements contained will get the maximum width possibile BUT within the div's width.
+  
+    </p>
+
+</div>
+
+
+
+<div><h2>Let's use div to display more elements regrouped in 3 sections in the same line</h2>
+
+      <div class="ElementsInOrizontalLineOne">
+
+      <img class="BMTHImage5" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+      <input type="text" name="" id="">
+      
+      </div>
+
+      <div class="ElementsInOrizontalLineTwo">
+
+        <input class="BoxOfElementsInOrizontalLineTwo" type="text" name="" id="">
+        <img class="BMTHImage6" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+        
+
+      </div>
+
+      <div class="ElementsInOrizontalLineThree">
+
+        <input class="BoxOfElementsInOrizontalLineTwo" type="text" name="" id="">
+        <img class="BMTHImage6" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\BrngMeToTheHorizon.jpg" alt="Image not available">
+        <p class="TextElementsInOrizontalLineThree">THIS IS THE MOST BEAUTIFUL TEXT IN THE WORLD. THIS IS THE MOST BEAUTIFUL TEXT IN THE WORLD. THIS IS THE MOST BEAUTIFUL TEXT IN THE WORLD.</p>
+        
+
+
+      </div>
+
+</div>
+
+
+
+<div><h2>Advanced technique: nested layouts technique</h2>
+
+  <p>
+    This technique allows us to create almost any kind of web stucture because it is all about combining a vertical alignment of elements with an orizontal alignment of elements:
+  </p>
+
+  <img class="NestedlayoutstechniqueImageOne"src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\Nested layouts technique 1.png" alt="Image not available">
+
+  <p>
+    As you can see, we first have got a vertical alignment (external red), which contains a orizontal alignment (blue), which contains another vertical alignment (internal red):
+  </p>
+
+  <img class="NestedlayoutstechniqueImageTwo" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\Nested layouts technique 2.png" alt="Image not available">
+
+  <p>
+    another example:
+  </p>
+
+  <img class="NestedlayoutstechniqueImageThree" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\Nested layouts technique 3.png" alt="Image not available">
+</div>
+
+
+<div><h2>Let's recreate a part of Youtube!</h2>
+
+  <p>This will be the final result:</p>
+
+  <img class="NestedlayoutstechniqueImageFour" src="C:\Users\Paolo\Desktop\HTML-CSS-YT tutorial\IntroToHTMLandCSS\Images\Nested layouts technique 4.png" alt="">
+
+  <p>
+    I will do this in a new file called: RecreatingYT
+
+    <br>
+
+    I am not still able and I am not able to follow the tutorial. I will INTERRUPT the course since the day after tomorrow I will start the one of Italy Generation and the first topics will be HTML and CSS.
+  </p>
+    
+    
+</div>
+
+
+</body>
+</html>
